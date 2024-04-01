@@ -1,0 +1,41 @@
+@startuml
+
+class models.Especie {
+    id: integer
+    nombre: string
+}
+
+class models.Animal {
+    id: integer
+    nombre: string
+    especie_id: integer
+}
+
+class models.Recinto {
+    id: integer
+    nombre: string
+}
+
+class models.Cuidador {
+    id: integer
+    nombre: string
+    especialidad: string
+}
+
+class models.Actividad {
+    id: integer
+    nombre: string
+    fecha: date
+    hora: time
+}
+
+Especie "1" --> "*" Animal 
+Animal "1" --> "1" Especie 
+Animal "*" --> "1" Recinto 
+Recinto "*" --> "*" Animal 
+Animal "*" --> "1" Cuidador 
+Cuidador "*" --> "*" Animal 
+Cuidador "*" --> "*" Actividad 
+Actividad "*" --> "*" Animal 
+
+@enduml
